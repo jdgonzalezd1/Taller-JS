@@ -12,7 +12,7 @@
 
 <body>
     <h1>Formulario</h1>
-    <form name="formularioTaller" action="Done.html" onsubmit="validaciones()" method="post">
+    <form name="formularioTaller" action="Done.html" onsubmit="return validaciones()" method="post">
         <div>
             <label for="doc">Tipo de documento</label><br>
             <select id="tipoDoc" name="TipoDoc">
@@ -38,10 +38,10 @@
             <input type="radio" id="hembra" name="Sexo" value="F">
             <label for="hembra">Femenino</label><br>
         </div>
-            <label for="Profesion">Profesion</label><br>
-            <input type="text" id="profesion" name="Profesion"><br>
-            <label for="Perfil">Perfil</label><br>
-            <textarea id="perfil" name="Perfil" rows="10" cols="50"></textarea><br>
+        <label for="Profesion">Profesion</label><br>
+        <input type="text" id="profesion" name="Profesion"><br>
+        <label for="Perfil">Perfil</label><br>
+        <textarea id="perfil" name="Perfil" rows="10" cols="50"></textarea><br>
         <div>
             <label>¿Cuales son sus Hobbies?</label><br>
             <input type="checkbox" id="caminar" name="Caminar">
@@ -53,7 +53,7 @@
             <input type="checkbox" id="futbol" name="Futbol">
             <label for="Futbol">Futbol</label><br>
             <input type="checkbox" id="tejo" name="Tejo">
-            <label for="Tejo">Tejo</label><br>            
+            <label for="Tejo">Tejo</label><br>
         </div>
         <div>
             <label>¿Tiene experiencia laboral?</label><br>
@@ -69,24 +69,17 @@
         </div>
     </form>
     <script>
-        function validaciones(){            
-            let y = document.forms[formularioTaller][numDoc].value;
-            if(y == ""){
+        function validaciones() {
+            let tipoDoc = document.getElementById("tipoDoc").value;
+            let numDoc = document.getElementById("numDoc").value;
+            let nombre = document.getElementById("nombre").value;
+            let apellido = document.getElementById(apellido).value;
+            if (a == "none") {
                 alert("Seleccione una opción valida");
                 return false;
             }
-            
-        }
-        function requerido(){
-            document.getElementById(this).required = true;
-        }
-        function checked(){
-            let x = document.getElementById("exp1");
-            window.alert(x);            
-        }
-        function limpiar(){
-            
         }
     </script>
 </body>
+
 </html>
