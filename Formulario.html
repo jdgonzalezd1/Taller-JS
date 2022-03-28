@@ -96,7 +96,7 @@
             } else if (apellido == "" || apellido.length < 3 || apellido.length > 40) {
                 alert("Escriba un apellido válido");
                 return false;
-            } else if (validarEmail(correo) == false) {
+            } else if (validarEmail(correo)) {
                 alert("Debe ingresar un correo valido");
                 return false;
             }
