@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Taller JS</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <!--<script src='validaciones.js'></script>-->
+</head>
+
+<body>
+    <h1>Formulario</h1>
+    <form name="formularioTaller" action="Done.html" onsubmit="validaciones()" method="post">
+        <div>
+            <label for="doc">Tipo de documento</label><br>
+            <select id="tipoDoc" name="TipoDoc">
+                <option value="CC">Cedula de Ciudadania</option>
+                <option value="TI">Documento de identidad</option>
+                <option value="none" selected disabled hidden>--Seleccione una--</option>
+            </select>
+        </div>
+        <div>
+            <label for="NumDoc">Numero de documento</label><br>
+            <input type="text" id="numDoc" name="NumDoc"><br>
+            <label for="Nombre">Nombre</label><br>
+            <input type="text" id="nombre" name="Nombre"><br>
+            <label for="text2">Apellido</label><br>
+            <input type="text" id="apellido" name="Apellido"><br>
+            <label for="Correo">Correo</label><br>
+            <input type="text" id="correo" name="Correo">
+        </div>
+        <div>
+            <label>Genero</label><br>
+            <input type="radio" id="macho" name="Sexo" value="M">
+            <label for="macho">Masculino</label><br>
+            <input type="radio" id="hembra" name="Sexo" value="F">
+            <label for="hembra">Femenino</label><br>
+        </div>
+            <label for="Profesion">Profesion</label><br>
+            <input type="text" id="profesion" name="Profesion"><br>
+            <label for="Perfil">Perfil</label><br>
+            <textarea id="perfil" name="Perfil" rows="10" cols="50"></textarea><br>
+        <div>
+            <label>¿Cuales son sus Hobbies?</label><br>
+            <input type="checkbox" id="caminar" name="Caminar">
+            <label for="Caminar">Caminar</label><br>
+            <input type="checkbox" id="ejercicio" name="Ejercicio">
+            <label for="Ejercicio">Ejercicio</label><br>
+            <input type="checkbox" id="ciclismo" name="Ciclismo">
+            <label for="Ciclismo">Ciclismo</label><br>
+            <input type="checkbox" id="futbol" name="Futbol">
+            <label for="Futbol">Futbol</label><br>
+            <input type="checkbox" id="tejo" name="Tejo">
+            <label for="Tejo">Tejo</label><br>            
+        </div>
+        <div>
+            <label>¿Tiene experiencia laboral?</label><br>
+            <input type="checkbox" id="exp1" name="Exp1" onclick="checked">
+            <label for="Exp1">Si</label><br>
+            <input type="checkbox" id="exp2" name="Exp2">
+            <label for="Exp2">No</label><br>
+            <textarea id="experiencia" name="experiencia" rows="10" cols="50" style="display: none;"></textarea>
+        </div>
+        <div>
+            <input type="submit">
+            <input type="button" value="Limpiar" onclick="limpiar">
+        </div>
+    </form>
+    <script>
+        function validaciones(){            
+            let y = document.forms[formularioTaller][numDoc].value;
+            if(y == ""){
+                alert("Seleccione una opción valida");
+                return false;
+            }
+            
+        }
+        function requerido(){
+            document.getElementById(this).required = true;
+        }
+        function checked(){
+            let x = document.getElementById("exp1");
+            window.alert(x);            
+        }
+        function limpiar(){
+            
+        }
+    </script>
+</body>
+</html>
