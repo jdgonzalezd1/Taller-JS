@@ -33,33 +33,36 @@
         </div>
         <div>
             <label>Genero</label><br>
-            <input type="radio" id="macho" name="Sexo" value="M">
+            <input type="radio" class="genero" id="macho" name="Sexo" value="M">
             <label for="macho">Masculino</label><br>
-            <input type="radio" id="hembra" name="Sexo" value="F">
+            <input type="radio" class="genero" id="hembra" name="Sexo" value="F">
             <label for="hembra">Femenino</label><br>
         </div>
-        <label for="Profesion">Profesion</label><br>
-        <input type="text" id="profesion" name="Profesion"><br>
-        <label for="Perfil">Perfil</label><br>
-        <textarea id="perfil" name="Perfil" rows="10" cols="50"></textarea><br>
+        <div>
+            <label for="Profesion">Profesion</label><br>
+            <input type="text" id="profesion" name="Profesion"><br>
+            <label for="Perfil">Perfil</label><br>
+            <textarea id="perfil" name="Perfil" rows="10" cols="50"></textarea><br>
+        </div>
+
         <div>
             <label>¿Cuales son sus Hobbies?</label><br>
-            <input type="checkbox" id="caminar" name="Caminar">
+            <input type="checkbox" class="checkboxH" id="caminar" name="Caminar">
             <label for="Caminar">Caminar</label><br>
-            <input type="checkbox" id="ejercicio" name="Ejercicio">
+            <input type="checkbox" class="checkboxH" id="ejercicio" name="Ejercicio">
             <label for="Ejercicio">Ejercicio</label><br>
-            <input type="checkbox" id="ciclismo" name="Ciclismo">
+            <input type="checkbox" class="checkboxH" id="ciclismo" name="Ciclismo">
             <label for="Ciclismo">Ciclismo</label><br>
-            <input type="checkbox" id="futbol" name="Futbol">
+            <input type="checkbox" class="checkboxH" id="futbol" name="Futbol">
             <label for="Futbol">Futbol</label><br>
-            <input type="checkbox" id="tejo" name="Tejo">
+            <input type="checkbox" class="checkboxH" id="tejo" name="Tejo">
             <label for="Tejo">Tejo</label><br>
         </div>
         <div>
             <label>¿Tiene experiencia laboral?</label><br>
-            <input type="checkbox" id="exp1" name="Exp1" onclick="checked">
+            <input type="checkbox" class="checkboxE" id="exp1" name="Exp1" onclick="checked">
             <label for="Exp1">Si</label><br>
-            <input type="checkbox" id="exp2" name="Exp2">
+            <input type="checkbox" class="checkboxE" id="exp2" name="Exp2">
             <label for="Exp2">No</label><br>
             <textarea id="experiencia" name="experiencia" rows="10" cols="50" style="display: none;"></textarea>
         </div>
@@ -73,9 +76,39 @@
             let tipoDoc = document.getElementById("tipoDoc").value;
             let numDoc = document.getElementById("numDoc").value;
             let nombre = document.getElementById("nombre").value;
-            let apellido = document.getElementById(apellido).value;
-            if (a == "none") {
-                alert("Seleccione una opción valida");
+            let apellido = document.getElementById("apellido").value;
+            let correo = document.getElementById("correo").value;
+            const genero = document.getElementsByClassName("genero");
+            let profesion = document.getElementById("profesion").value;
+            let perfil = document.getElementById("perfil").value;
+            const hobbies = document.getElementsByClassName("checkboxH");
+            const expL = document.getElementById("checkboxE");            
+
+            if (tipoDoc == "none") {
+                alert("Seleccione un tipo de documento");
+                return false;
+            } else if (numDoc == "" || isNaN(numDoc)) {
+                alert("Debe colocar un documento valido");
+                return false;
+            } else if (nombre == "" || nombre.length < 3 || nombre.length > 40) {
+                alert("Escriba un nombre válido");
+                return false;
+            } else if (apellido == "" || apellido.length < 3 || apellido.length > 40) {
+                alert("Escriba un apellido válido");
+                return false;
+            } else if (validarEmail(correo) == false) {
+                alert("Debe ingresar un correo valido");
+                return false;
+            }
+        }
+
+        function validarEmail(correo){            
+            //var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(correo.value)){
+                alert("correo valido");
+                return true;
+            }else{
+                alert("correo invalido");
                 return false;
             }
         }
