@@ -12,7 +12,7 @@
 
 <body>
     <h1>Formulario</h1>
-    <form name="formularioTaller" action="Done.html" onsubmit="return validaciones()" method="post">
+    <form name="formularioTaller"  action="Done.html"  onsubmit="return validaciones()" method="post">
         <div>
             <label for="doc">Tipo de documento</label><br>
             <select id="tipoDoc" name="TipoDoc">
@@ -60,15 +60,16 @@
         </div>
         <div>
             <label>¿Tiene experiencia laboral?</label><br>
-            <input type="checkbox" class="checkboxE" id="exp1" name="Exp1" onclick="checked">
+            <input type="checkbox" class="checkboxE" id="exp1" name="Exp1" onclick="habilitarTextArea()"> 
             <label for="Exp1">Si</label><br>
+            <textarea id="experiencia" name="Experiencia" rows="10" cols="50" style="display:none;"></textarea>
             <input type="checkbox" class="checkboxE" id="exp2" name="Exp2">
             <label for="Exp2">No</label><br>
-            <textarea id="experiencia" name="experiencia" rows="10" cols="50" style="display: none;"></textarea>
+            
         </div>
         <div>
             <input type="submit">
-            <input type="button" value="Limpiar" onclick="limpiar">
+            <input type="button" value="Limpiar" onclick="limpiar()">
         </div>
     </form>
     <script>
@@ -82,7 +83,8 @@
             let profesion = document.getElementById("profesion").value;
             let perfil = document.getElementById("perfil").value;
             const hobbies = document.getElementsByClassName("checkboxH");
-            const expL = document.getElementById("checkboxE");            
+            const expL = document.getElementsByClassName("checkboxE");       
+            let experience = document.getElementById("experiencia");     
 
             if (tipoDoc == "none") {
                 alert("Seleccione un tipo de documento");
@@ -96,20 +98,112 @@
             } else if (apellido == "" || apellido.length < 3 || apellido.length > 40) {
                 alert("Escriba un apellido válido");
                 return false;
-            } else if (validarEmail(correo)) {
+            } else if (!validarEmail(correo)) {
                 alert("Debe ingresar un correo valido");
+                return false;
+            } else if (!validarGenero(genero)){
+                alert("Debe seleccionar un genero");
+                return false;
+            } else if (profesion == "" || profesion.length >75){
+                alert("Ingrese una profesión valida");
+                return false;
+            } else if (perfil == "" || perfil.length >250){
+                alert("Debe ingresar un perfil");
+                return false;
+            } else if (!validarHobbie(hobbies)){
+                alert("Debe seleccionar al menos un hobbie");
+                return false;
+            } else if (!validarExperienciaLaboral(expL)){
+                alert("Debe seleccionar UNA respuesta a la pregunta");
+                return false;
+            } else if (experience.style.display == 'block'){
+                if(experience.value == ""){
+                    alert("Indique su experiencia laboral");
+                    return false;
+                }
+            }
+        }
+
+        function validarEmail(correo){          
+            // /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i  
+            const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(mailFormat.test(correo)){
+                //alert("valido");
+                return true;
+            }else{
+                //alert("invalido")
                 return false;
             }
         }
 
-        function validarEmail(correo){            
-            //var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(correo.value)){
-                alert("correo valido");
+        function validarGenero(genero){
+            //const generos = Array.from(document.getElementsByClassName("genero"));
+            //alert(genero.length);
+            for(let i = 0; i < genero.length; i++){
+                //alert(genero[i].checked);
+                if(genero[i].checked == true){
+                    return true;
+                } else{
+                    return false;
+                }
+            }
+        }
+
+        function validarHobbie(hobbies){
+            let x = 0;
+            for(let i = 0; i <hobbies.length; i++){
+                if (hobbies[i].checked == true){
+                    x += 1;
+                }
+            }
+            if(x > 0){
                 return true;
             }else{
-                alert("correo invalido");
                 return false;
+            }
+        }
+
+        function validarExperienciaLaboral(expL){
+            let x = 0;
+            for(let i = 0; i < expL.length; i++){
+                if(expL[i].checked == true){
+                    x += 1;
+                }
+            }
+            if(x == 1){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        function habilitarTextArea(){
+            let labor = document.getElementById("experiencia");
+            if (labor.style.display == '' || labor.style.display == 'none'){
+                labor.style.display = 'block';
+            }else{
+                labor.style.display = 'none';
+            }            
+        }
+
+        function limpiar(genero, hobbies, expL){
+            document.getElementById("tipoDoc").value = "none";
+            document.getElementById("numDoc").value = "";
+            document.getElementById("nombre").value = "";
+            document.getElementById("apellido").value = "";
+            document.getElementById("correo").value = "";            
+            document.getElementById("profesion").value = "";
+            document.getElementById("perfil").value = "";                        
+            document.getElementById("experiencia").value = "";   
+            document.getElementById("experiencia").style.display = 'none';   
+            limpiarChecks(document.getElementsByClassName("genero"));
+            limpiarChecks(document.getElementsByClassName("checkboxH"));
+            limpiarChecks(document.getElementsByClassName("checkboxE"));
+        }
+
+        function limpiarChecks(arreglo){
+            for(let i = 0; i < arreglo.length; i++){
+                arreglo[i].checked = false;
             }
         }
     </script>
