@@ -8,21 +8,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!--<script src='validaciones.js'></script>-->
 </head>
 
 <body>
-<<<<<<< Updated upstream
-    <h1>Formulario</h1>
-    <form name="formularioTaller"  action="Done.html"  onsubmit="return validaciones()" method="post">
-        <div>
-            <label for="doc">Tipo de documento</label><br>
-            <select id="tipoDoc" name="TipoDoc">
-                <option value="CC">Cedula de Ciudadania</option>
-                <option value="TI">Documento de identidad</option>
-                <option value="none" selected disabled hidden>--Seleccione una--</option>
-            </select>
-=======
     <header>
         <div class="mask" style="background-color: rgba(31, 34, 231, 0.6);">
             <div class="d-flex justify-content-center align-items-center h-100">
@@ -48,7 +36,6 @@
                     <input type="text" id="numDoc" class="form-control" name="NumDoc"><br>
                 </div>
             </div>
->>>>>>> Stashed changes
         </div>
         <div class="container">
             <div class="row">
@@ -66,12 +53,6 @@
         </div>
         <div class="container">
             <label>Genero</label><br>
-<<<<<<< Updated upstream
-            <input type="radio" class="genero" id="macho" name="Sexo" value="M">
-            <label for="macho">Masculino</label><br>
-            <input type="radio" class="genero" id="hembra" name="Sexo" value="F">
-            <label for="hembra">Femenino</label><br>
-=======
             <div class="form-check">
                 <input type="radio" class="genero form-check-input" id="Masculino" name="radio1" value="M">
                 <label class="form-check-label" for="macho">Masculino</label><br>
@@ -80,7 +61,6 @@
                 <input type="radio" class="genero form-check-input" id="Femenino" name="radio1" value="F">
                 <label class="form-check-label" for="hembra">Femenino</label><br>
             </div>
->>>>>>> Stashed changes
         </div>
         <div class="container">
             <label for="Profesion">Profesion</label><br>
@@ -111,18 +91,6 @@
         </div>
         <div class="container">
             <label>¿Tiene experiencia laboral?</label><br>
-<<<<<<< Updated upstream
-            <input type="checkbox" class="checkboxE" id="exp1" name="Exp1" onclick="habilitarTextArea()"> 
-            <label for="Exp1">Si</label><br>
-            <textarea id="experiencia" name="Experiencia" rows="10" cols="50" style="display:none;"></textarea>
-            <input type="checkbox" class="checkboxE" id="exp2" name="Exp2">
-            <label for="Exp2">No</label><br>
-            
-        </div>
-        <div>
-            <input type="submit">
-            <input type="button" value="Limpiar" onclick="limpiar()">
-=======
             <div class="form-check">
                 <input type="checkbox" class="checkboxE form-check-input" id="exp1" name="Exp1"
                     onclick="habilitarTextArea()" class="form-check-input">
@@ -134,13 +102,9 @@
         <div class="container">
             <button type="submit" class="btn btn-primary">Enviar</button>
             <input type="button" class="btn btn-secondary" value="Reiniciar" onclick="limpiar()">
->>>>>>> Stashed changes
         </div>
         <br>
     </form>
-<<<<<<< Updated upstream
-    <script>
-=======
     <div id="imprimirSect" class="container" style="display:none;"></div> 
     </div>
 
@@ -177,7 +141,6 @@
         }
 
 
->>>>>>> Stashed changes
         function validaciones() {
             let tipoDoc = document.getElementById("tipoDoc").value;
             let numDoc = document.getElementById("numDoc").value;
@@ -230,26 +193,16 @@
         }
 
         function validarEmail(correo){          
-            // /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i  
             const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             if(mailFormat.test(correo)){
-                //alert("valido");
                 return true;
-<<<<<<< Updated upstream
-            }else{
-                //alert("invalido")
-=======
             } else {
->>>>>>> Stashed changes
                 return false;
             }
         }
 
         function validarGenero(genero){
-            //const generos = Array.from(document.getElementsByClassName("genero"));
-            //alert(genero.length);
             for(let i = 0; i < genero.length; i++){
-                //alert(genero[i].checked);
                 if(genero[i].checked == true){
                     return true;
                 } else{
@@ -315,8 +268,6 @@
                 arreglo[i].checked = false;
             }
         }
-<<<<<<< Updated upstream
-=======
 
         function anadirNodo(x) {
             let newP = document.createElement("p");
@@ -354,7 +305,6 @@
             }
             return valor;
         }
->>>>>>> Stashed changes
     </script>
 </body>
 
