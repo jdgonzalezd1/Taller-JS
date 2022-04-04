@@ -6,100 +6,127 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Taller JS</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <!--<script src='validaciones.js'></script>-->
-    <style>
-        header {
-            background-color: #666;
-            padding: 30px;
-            text-align: center;
-            font-size: 35px;
-            color: white;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-    <header>Formulario</header>
+    <header>
+        <div class="mask" style="background-color: rgba(31, 34, 231, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-5" style="font-family:Arial, sans-serif;">Formulario</h1>
+                </div>
+            </div>
+        </div>
+    </header>
     <form id="formT" name="formularioTaller" method="post">
-        <div>
-            <label for="doc">Tipo de documento</label><br>
-            <select id="tipoDoc" name="TipoDoc">
-                <option value="CC">Cedula de Ciudadania</option>
-                <option value="TI">Documento de identidad</option>
-                <option value="none" selected disabled hidden>--Seleccione una--</option>
-            </select>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <label for="doc">Tipo de documento</label><br>
+                    <select id="tipoDoc" name="TipoDoc" class="form-control">
+                        <option value="CC">Cedula de Ciudadania</option>
+                        <option value="TI">Documento de identidad</option>
+                        <option value="none" selected disabled hidden>--Seleccione un tipo--</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="NumDoc">Numero de documento</label><br>
+                    <input type="text" id="numDoc" class="form-control" name="NumDoc"><br>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="NumDoc">Numero de documento</label><br>
-            <input type="text" id="numDoc" name="NumDoc"><br>
-            <label for="Nombre">Nombre</label><br>
-            <input type="text" id="nombre" name="Nombre"><br>
-            <label for="text2">Apellido</label><br>
-            <input type="text" id="apellido" name="Apellido"><br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <label for="Nombre">Nombre</label>
+                    <input type="text" id="nombre" name="Nombre" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="text2">Apellido</label><br>
+                    <input type="text" id="apellido" name="Apellido" class="form-control"><br>
+                </div>
+            </div>
             <label for="Correo">Correo</label><br>
-            <input type="text" id="correo" name="Correo">
+            <input type="text" id="correo" name="Correo" class="form-control">
         </div>
-        <div>
+        <div class="container">
             <label>Genero</label><br>
-            <input type="radio" class="genero" id="macho" name="Masculino" value="M">
-            <label for="macho">Masculino</label><br>
-            <input type="radio" class="genero" id="hembra" name="Femenino" value="F">
-            <label for="hembra">Femenino</label><br>
+            <div class="form-check">
+                <input type="radio" class="genero form-check-input" id="Masculino" name="radio1" value="M">
+                <label class="form-check-label" for="macho">Masculino</label><br>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="genero form-check-input" id="Femenino" name="radio1" value="F">
+                <label class="form-check-label" for="hembra">Femenino</label><br>
+            </div>
         </div>
-        <div>
+        <div class="container">
             <label for="Profesion">Profesion</label><br>
-            <input type="text" id="profesion" name="Profesion"><br>
+            <input type="text" id="profesion" name="Profesion" class="form-control"><br>
             <label for="Perfil">Perfil</label><br>
-            <textarea id="perfil" name="Perfil" rows="10" cols="50"></textarea><br>
+            <textarea id="perfil" name="Perfil" rows="10" cols="50" class="form-control"></textarea><br>
         </div>
 
-        <div>
-            <label>¿Cuales son sus Hobbies?</label><br>
-            <input type="checkbox" class="checkboxH" id="caminar" name="Caminar">
-            <label for="Caminar">Caminar</label><br>
-            <input type="checkbox" class="checkboxH" id="ejercicio" name="Ejercicio">
-            <label for="Ejercicio">Ejercicio</label><br>
-            <input type="checkbox" class="checkboxH" id="ciclismo" name="Ciclismo">
-            <label for="Ciclismo">Ciclismo</label><br>
-            <input type="checkbox" class="checkboxH" id="futbol" name="Futbol">
-            <label for="Futbol">Futbol</label><br>
-            <input type="checkbox" class="checkboxH" id="tejo" name="Tejo">
-            <label for="Tejo">Tejo</label><br>
+        <div class="container">
+            <label>¿Cuales son sus Hobbies?</label>
+            <div class="form-check">
+                <input type="checkbox" class="checkboxH form-check-input" id="caminar" name="Caminar"
+                    class="form-control">
+                <label for="Caminar" class="form-check-label">Caminar</label><br>
+                <input type="checkbox" class="checkboxH form-check-input" id="ejercicio" name="Ejercicio"
+                    class="form-control">
+                <label for="Ejercicio" class="form-check-label">Ejercicio</label><br>
+                <input type="checkbox" class="checkboxH form-check-input" id="ciclismo" name="Ciclismo"
+                    class="form-control">
+                <label for="Ciclismo" class="form-check-label">Ciclismo</label><br>
+                <input type="checkbox" class="checkboxH form-check-input" id="futbol" name="Futbol"
+                    class="form-control">
+                <label for="Futbol" class="form-check-label">Futbol</label><br>
+                <input type="checkbox" class="checkboxH form-check-input" id="tejo" name="Tejo" class="form-control">
+                <label for="Tejo" class="form-check-label">Tejo</label><br>
+            </div>
+
         </div>
-        <div>
+        <div class="container">
             <label>¿Tiene experiencia laboral?</label><br>
-            <input type="checkbox" class="checkboxE" id="exp1" name="Exp1" onclick="habilitarTextArea()">
-            <label for="Exp1">Si</label><br>
-            <textarea id="experiencia" name="Experiencia" rows="10" cols="50" style="display:none;"></textarea>
-            <!--        <input type="checkbox" class="checkboxE" id="exp2" name="Exp2">
-                <label for="Exp2">No</label><br> -->
-
+            <div class="form-check">
+                <input type="checkbox" class="checkboxE form-check-input" id="exp1" name="Exp1"
+                    onclick="habilitarTextArea()" class="form-check-input">
+                <label for="Exp1" class="form-check-label">Si</label><br>
+            </div>
+            <textarea id="experiencia" name="Experiencia" rows="10" cols="50" style="display:none;"
+                class="form-control"></textarea>
         </div>
-        <div>
-            <button type="submit">Enviar</button>
-            <input type="button" value="Reiniciar" onclick="limpiar()">
+        <div class="container">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <input type="button" class="btn btn-secondary" value="Reiniciar" onclick="limpiar()">
         </div>
+        <br>
     </form>
-
-    <script>        
-        let imprimir = function(event){
+    <div id="imprimirSect" class="container" style="display:none;"></div> 
+    </div>
+    
+    <script>
+        let imprimir = function (event) {
             datos();
             event.preventDefault();
         }
-        
+
         let form = document.getElementById("formT");
         form.addEventListener("submit", imprimir, true);
 
         function datos() {
             if (validaciones() == true) {
                 document.getElementById("formT").style.display = 'none';
+                document.getElementById("imprimirSect").style.display = 'block';
                 anadirNodo(document.getElementById("tipoDoc").value);
                 anadirNodo(document.getElementById("numDoc").value);
                 anadirNodo(document.getElementById("nombre").value);
                 anadirNodo(document.getElementById("apellido").value);
                 anadirNodo(document.getElementById("correo").value);
-                anadirNodo(obtenerValor(document.getElementsByClassName("genero")));
+                anadirNodo(obtenerValorG(document.getElementsByClassName("genero")));
                 anadirNodo(document.getElementById("profesion").value);
                 anadirNodo(document.getElementById("perfil").value);
                 anadirNodo(obtenerValor(document.getElementsByClassName("checkboxH")));
@@ -158,18 +185,18 @@
             return true;
         }
 
-        function validarEmail(correo) {
+        function validarEmail(correo){          
             const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if (mailFormat.test(correo)) {
+            if(mailFormat.test(correo)){
                 return true;
-            } else {            
+            } else {
                 return false;
             }
         }
 
-        function validarGenero(genero) {
-            for (let i = 0; i < genero.length; i++) {
-                if (genero[i].checked == true) {
+        function validarGenero(genero){
+            for(let i = 0; i < genero.length; i++){
+                if(genero[i].checked == true){
                     return true;
                 }
             }
@@ -231,24 +258,34 @@
             let newP = document.createElement("p");
             let newText = document.createTextNode(x);
             newP.appendChild(newText);
-            document.body.appendChild(newP);
+            document.getElementById("imprimirSect").appendChild(newP);
         }
 
-        function obtenerGenero(gen){
+        function obtenerGenero(gen) {
             let valor = "";
-            for(let i = 0; i < gen.length; i++){
-                if(gen[i].checked == true){
+            for (let i = 0; i < gen.length; i++) {
+                if (gen[i].checked == true) {
                     valor += gen[i].name;
                 }
             }
             return valor;
         }
 
-        function obtenerValor(hob){
+        function obtenerValor(hob) {
             let valor = "";
-            for(let i = 0; i < hob.length; i++){
-                if(hob[i].checked == true){
+            for (let i = 0; i < hob.length; i++) {
+                if (hob[i].checked == true) {
                     valor += hob[i].name + " ";
+                }
+            }
+            return valor;
+        }
+
+        function obtenerValorG(gen) {
+            let valor = "";
+            for (let i = 0; i < gen.length; i++) {
+                if (gen[i].checked == true) {
+                    valor += gen[i].id + " ";
                 }
             }
             return valor;
