@@ -105,9 +105,9 @@
         </div>
         <br>
     </form>
-    <div id="imprimirSect" class="container" style="display:none;"></div> 
+    <div id="imprimirSect" class="container" style="display:none;"></div>
     </div>
-    
+
     <script>
         let imprimir = function (event) {
             datos();
@@ -129,7 +129,7 @@
                 anadirNodo(obtenerValorG(document.getElementsByClassName("genero")));
                 anadirNodo(document.getElementById("profesion").value);
                 anadirNodo(document.getElementById("perfil").value);
-                anadirNodo(obtenerValor(document.getElementsByClassName("checkboxH")));
+                anadirNodo(obtenerValorG(document.getElementsByClassName("checkboxH")));
                 anadirNodo(document.getElementById("experiencia").value);
                 return true;
             } else {
@@ -137,7 +137,6 @@
             }
 
         }
-
 
         function validaciones() {
             let tipoDoc = document.getElementById("tipoDoc").value;
@@ -185,18 +184,14 @@
             return true;
         }
 
-        function validarEmail(correo){          
+        function validarEmail(correo) {
             const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            if(mailFormat.test(correo)){
-                return true;
-            } else {
-                return false;
-            }
+            return mailFormat.test(correo);
         }
 
-        function validarGenero(genero){
-            for(let i = 0; i < genero.length; i++){
-                if(genero[i].checked == true){
+        function validarGenero(genero) {
+            for (let i = 0; i < genero.length; i++) {
+                if (genero[i].checked == true) {
                     return true;
                 }
             }
@@ -207,10 +202,10 @@
             let x = 0;
             for (let i = 0; i < hobbies.length; i++) {
                 if (hobbies[i].checked == true) {
-                    x += 1;
+                    return true;
                 }
             }
-            return x > 0;
+            return false;
         }
 
         function validarExperienciaLaboral(expL) {
@@ -261,25 +256,6 @@
             document.getElementById("imprimirSect").appendChild(newP);
         }
 
-        function obtenerGenero(gen) {
-            let valor = "";
-            for (let i = 0; i < gen.length; i++) {
-                if (gen[i].checked == true) {
-                    valor += gen[i].name;
-                }
-            }
-            return valor;
-        }
-
-        function obtenerValor(hob) {
-            let valor = "";
-            for (let i = 0; i < hob.length; i++) {
-                if (hob[i].checked == true) {
-                    valor += hob[i].name + " ";
-                }
-            }
-            return valor;
-        }
 
         function obtenerValorG(gen) {
             let valor = "";
